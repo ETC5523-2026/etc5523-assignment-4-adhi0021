@@ -29,7 +29,7 @@ compare_lifter(
 - data:
 
   A data frame with the same fields as
-  [powerlifting](https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/bonafide/reference/powerlifting.md),
+  [powerlifting](https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/reference/powerlifting.md),
   or `NULL` to use the packaged data.
 
 - sex:

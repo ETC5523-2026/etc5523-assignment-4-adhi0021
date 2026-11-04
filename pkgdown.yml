@@ -1,8 +1,9 @@
 pandoc: 3.8.3
 pkgdown: 2.2.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2026-11-04T04:20Z
+articles:
+  using-bonafide: using-bonafide.html
+last_built: 2026-11-04T04:50Z
 urls:
-  reference: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/bonafide/reference
-  article: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/bonafide/articles
+  reference: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/reference
+  article: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/articles
