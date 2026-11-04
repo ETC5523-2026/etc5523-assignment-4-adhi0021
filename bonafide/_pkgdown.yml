@@ -1,5 +1,5 @@
 
-url: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/
+url: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/bonafide
 
 template:
   bootstrap: 5
@@ -12,7 +12,7 @@ navbar:
   components:
     github:
       icon: fa-github
-      href: https://github.com/ETC5523-2026/etc5523-assignment-4-adhi0021
+      href: https://github.com/ETC5523-2026/etc5523-assignment-4-adhi0021/bonafide
 
 reference:
   - title: Package functions
