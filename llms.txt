@@ -1,5 +1,10 @@
 # bonafide: Powerlifting Peer Benchmarker
 
+**Package website:**
+<https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/>
+(function reference, data documentation and the [Get started
+vignette](https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/articles/using-bonafide.html)).
+
 `bonafide` is an R package and Shiny app for powerlifters and coaches.
 It asks:
 
@@ -48,6 +53,22 @@ library(bonafide)
 run_powerlifting_app()
 ```
 
+The app opens in a browser or the IDE viewer. Choose the sex and
+equipment category, enter bodyweight and the three best lifts, and the
+percentile chart, peer-total histogram and plain-language summary update
+automatically. The **Guide & limitations** tab explains every field. To
+stop the app, close it and press Esc in the R console.
+
+## Data preparation
+
+`data-raw/prepare_powerlifting.R` rebuilds `data/powerlifting.rda` from
+the raw CSV. From the package root, run:
+
+``` r
+
+source("data-raw/prepare_powerlifting.R")
+```
+
 The package also supports programmatic comparison:
 
 ``` r
@@ -66,11 +87,12 @@ Package documentation and the vignette are published at
 
 ## Generative AI declaration
 
-Generative AI declaration: I used OpenAI Codex to help plan the user
-question; scaffold and revise the R package, data-preparation script,
-Shiny application, tests, documentation and styling; and diagnose
-package-check issues. I checked and revised the generated code and text
-and remain responsible for the submitted work.
+Generative AI declaration: I used ChatGPT to help plan the user
+question; data-preparation script robustness, documentation and styling.
+I used Claude Code to diagnose why the pkgdown website was not loading,
+to revise the Shiny app’s validation and robustness, interpretation text
+and charts. I checked and revised the generated code and text and remain
+responsible for the submitted work.
 
 ## Licence
 

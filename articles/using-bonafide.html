@@ -89,21 +89,114 @@ also be included.</p>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/">bonafide</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/run_powerlifting_app.html">run_powerlifting_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>In the app, choose competition sex and equipment, enter bodyweight
-and the three best successful lifts, then select <strong>Compare
-performance</strong>. Start with the default ±5 kg bodyweight window.
-Age matching can produce a more specific group but may make the
-comparison unstable when few records remain.</p>
+<p>The app opens in your browser (or the RStudio/Positron viewer). To
+stop it, close the window and press <strong>Esc</strong> (or the stop
+button) in the R console.</p>
+</div>
+<div class="section level2">
+<h2 id="using-the-app">Using the app<a class="anchor" aria-label="anchor" href="#using-the-app"></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>In <strong>Who to compare against</strong>, choose the competition
+sex and equipment category, enter the bodyweight and set the bodyweight
+matching window. Start with the default ±5 kg.</li>
+<li>Optionally tick <strong>Also match by age</strong>. This gives a
+more specific peer group, but age is missing for many records, so the
+group gets smaller.</li>
+<li>In <strong>The performance to benchmark</strong>, enter the best
+successful squat, bench press and deadlift. The results update
+automatically after you stop typing.</li>
+<li>Every control has a short explanation underneath it, and the
+<strong>Guide &amp; limitations</strong> tab defines each field.</li>
+</ol>
+</div>
+<div class="section level2">
+<h2 id="interpreting-the-outputs">Interpreting the outputs<a class="anchor" aria-label="anchor" href="#interpreting-the-outputs"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>App output</th>
+<th>What it shows</th>
+<th>How it answers the question</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Peer-group message</td>
+<td>Green: at least 30 matching records. Amber: fewer than 30. Red:
+none.</td>
+<td>Tells you whether the comparison is trustworthy before you read
+anything else.</td>
+</tr>
+<tr class="even">
+<td>Value boxes</td>
+<td>Entered total, number of comparable performances, and the lift with
+the lowest percentile.</td>
+<td>A quick headline answer.</td>
+</tr>
+<tr class="odd">
+<td><em>What this means</em></td>
+<td>A plain-language summary of the result.</td>
+<td>Puts the answer into words, including whether the lift profile is
+balanced.</td>
+</tr>
+<tr class="even">
+<td>Percentile by lift</td>
+<td>The percentile of each lift and the total, with a dashed line at 50%
+(the typical peer).</td>
+<td>The shortest of the three lift bars is the lift with the most
+relative room to improve.</td>
+</tr>
+<tr class="odd">
+<td>Your total among peer totals</td>
+<td>A histogram of peer totals, with your total (red) and the peer
+median (dashed).</td>
+<td>Shows overall strength in context, not just as a single number.</td>
+</tr>
+<tr class="even">
+<td>Detailed benchmark</td>
+<td>Your lift, the peer median, the gap to the median and the
+percentile.</td>
+<td>Translates percentiles back into kilograms.</td>
+</tr>
+</tbody>
+</table>
+<p>The percentile chart in the app is built from the same
+<code>summary</code> table that <code><a href="../reference/compare_lifter.html">compare_lifter()</a></code> returns.
+Here is the same chart for the example lifter used below:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/">bonafide</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compare_lifter.html">compare_lifter</a></span><span class="op">(</span><span class="va">powerlifting</span>, sex <span class="op">=</span> <span class="st">"F"</span>, equipment <span class="op">=</span> <span class="st">"Raw"</span>,</span>
+<span>                      bodyweight <span class="op">=</span> <span class="fl">63</span>, squat <span class="op">=</span> <span class="fl">110</span>, bench <span class="op">=</span> <span class="fl">60</span>, deadlift <span class="op">=</span> <span class="fl">140</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">lift</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">lift</span><span class="op">)</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">percentile</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#315c6b"</span>, width <span class="op">=</span> <span class="fl">0.65</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">50</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="st">"Percentile among comparable performances"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="using-bonafide_files/figure-html/percentile-plot-1.png" class="r-plt" alt="Bar chart of squat, bench, deadlift and total percentiles for the example lifter." width="576"></p>
+<p><strong>A worked finding.</strong> For this raw female lifter at 63
+kg, the Bench has the lowest percentile (59.2%), compared with 70.1% for
+the strongest lift, across 13,921 comparable performances. Relative to
+similar competitors, the bench is the lift with the most room to
+improve. A good check in the app is to widen and narrow the bodyweight
+window: if the same lift stays the lowest, the finding is robust to how
+“similar” is defined.</p>
 </div>
 <div class="section level2">
 <h2 id="use-the-comparison-function">Use the comparison function<a class="anchor" aria-label="anchor" href="#use-the-comparison-function"></a>
 </h2>
 <p>The app uses the exported <code><a href="../reference/compare_lifter.html">compare_lifter()</a></code> function. The
 same analysis can be reproduced directly:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/">bonafide</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">example_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compare_lifter.html">compare_lifter</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">example_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compare_lifter.html">compare_lifter</a></span><span class="op">(</span></span>
 <span>  <span class="va">powerlifting</span>,</span>
 <span>  sex <span class="op">=</span> <span class="st">"F"</span>,</span>
 <span>  equipment <span class="op">=</span> <span class="st">"Raw"</span>,</span>
@@ -137,11 +230,31 @@ not in the dataset.</p>
 <div class="section level2">
 <h2 id="weak-states">Weak states<a class="anchor" aria-label="anchor" href="#weak-states"></a>
 </h2>
-<p>The app checks for non-positive and implausibly large values. It also
-reports when no peers match or when fewer than 30 records match. If the
-sample is small, broaden the bodyweight window, turn off age matching,
-or choose the correct equipment category before interpreting the
-chart.</p>
+<p>The app handles three kinds of weak state:</p>
+<ul>
+<li>
+<strong>Invalid input.</strong> A blank lift, a bodyweight outside
+30–250 kg, a missing age while age matching is on, or a total above
+1,500 kg (usually pounds entered as kilograms) shows a message
+explaining what to fix, instead of a chart.</li>
+<li>
+<strong>Empty peer group.</strong> If no records match (for example,
+a 150 kg multi-ply woman), a red message suggests widening the window,
+and the charts are replaced with an explanation.</li>
+<li>
+<strong>Small peer group.</strong> If fewer than 30 records match,
+the results are still shown, but with an amber warning that the
+percentiles are unstable.</li>
+</ul>
+<p>The same states are visible from code:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">empty</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compare_lifter.html">compare_lifter</a></span><span class="op">(</span><span class="va">powerlifting</span>, sex <span class="op">=</span> <span class="st">"F"</span>, equipment <span class="op">=</span> <span class="st">"Multi-ply"</span>,</span>
+<span>                        bodyweight <span class="op">=</span> <span class="fl">150</span>, squat <span class="op">=</span> <span class="fl">200</span>, bench <span class="op">=</span> <span class="fl">120</span>,</span>
+<span>                        deadlift <span class="op">=</span> <span class="fl">200</span>, bodyweight_tolerance <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">empty</span><span class="op">$</span><span class="va">n</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span><span class="va">empty</span><span class="op">$</span><span class="va">weakest_lift</span></span>
+<span><span class="co">#&gt; [1] NA</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="data-preparation-and-limitations">Data preparation and limitations<a class="anchor" aria-label="anchor" href="#data-preparation-and-limitations"></a>

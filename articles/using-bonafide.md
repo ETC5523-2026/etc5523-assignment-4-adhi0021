@@ -25,11 +25,66 @@ library(bonafide)
 run_powerlifting_app()
 ```
 
-In the app, choose competition sex and equipment, enter bodyweight and
-the three best successful lifts, then select **Compare performance**.
-Start with the default ±5 kg bodyweight window. Age matching can produce
-a more specific group but may make the comparison unstable when few
-records remain.
+The app opens in your browser (or the RStudio/Positron viewer). To stop
+it, close the window and press **Esc** (or the stop button) in the R
+console.
+
+## Using the app
+
+1.  In **Who to compare against**, choose the competition sex and
+    equipment category, enter the bodyweight and set the bodyweight
+    matching window. Start with the default ±5 kg.
+2.  Optionally tick **Also match by age**. This gives a more specific
+    peer group, but age is missing for many records, so the group gets
+    smaller.
+3.  In **The performance to benchmark**, enter the best successful
+    squat, bench press and deadlift. The results update automatically
+    after you stop typing.
+4.  Every control has a short explanation underneath it, and the **Guide
+    & limitations** tab defines each field.
+
+## Interpreting the outputs
+
+| App output | What it shows | How it answers the question |
+|----|----|----|
+| Peer-group message | Green: at least 30 matching records. Amber: fewer than 30. Red: none. | Tells you whether the comparison is trustworthy before you read anything else. |
+| Value boxes | Entered total, number of comparable performances, and the lift with the lowest percentile. | A quick headline answer. |
+| *What this means* | A plain-language summary of the result. | Puts the answer into words, including whether the lift profile is balanced. |
+| Percentile by lift | The percentile of each lift and the total, with a dashed line at 50% (the typical peer). | The shortest of the three lift bars is the lift with the most relative room to improve. |
+| Your total among peer totals | A histogram of peer totals, with your total (red) and the peer median (dashed). | Shows overall strength in context, not just as a single number. |
+| Detailed benchmark | Your lift, the peer median, the gap to the median and the percentile. | Translates percentiles back into kilograms. |
+
+The percentile chart in the app is built from the same `summary` table
+that
+[`compare_lifter()`](https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/reference/compare_lifter.md)
+returns. Here is the same chart for the example lifter used below:
+
+``` r
+
+library(bonafide)
+library(ggplot2)
+
+res <- compare_lifter(powerlifting, sex = "F", equipment = "Raw",
+                      bodyweight = 63, squat = 110, bench = 60, deadlift = 140)
+
+ggplot(res$summary, aes(x = factor(lift, rev(lift)), y = percentile)) +
+  geom_col(fill = "#315c6b", width = 0.65) +
+  geom_hline(yintercept = 50, linetype = "dashed") +
+  coord_flip() +
+  labs(x = NULL, y = "Percentile among comparable performances") +
+  theme_minimal()
+```
+
+![Bar chart of squat, bench, deadlift and total percentiles for the
+example lifter.](using-bonafide_files/figure-html/percentile-plot-1.png)
+
+**A worked finding.** For this raw female lifter at 63 kg, the Bench has
+the lowest percentile (59.2%), compared with 70.1% for the strongest
+lift, across 13,921 comparable performances. Relative to similar
+competitors, the bench is the lift with the most room to improve. A good
+check in the app is to widen and narrow the bodyweight window: if the
+same lift stays the lowest, the finding is robust to how “similar” is
+defined.
 
 ## Use the comparison function
 
@@ -38,8 +93,6 @@ The app uses the exported
 function. The same analysis can be reproduced directly:
 
 ``` r
-
-library(bonafide)
 
 example_result <- compare_lifter(
   powerlifting,
@@ -77,10 +130,31 @@ dataset.
 
 ## Weak states
 
-The app checks for non-positive and implausibly large values. It also
-reports when no peers match or when fewer than 30 records match. If the
-sample is small, broaden the bodyweight window, turn off age matching,
-or choose the correct equipment category before interpreting the chart.
+The app handles three kinds of weak state:
+
+- **Invalid input.** A blank lift, a bodyweight outside 30–250 kg, a
+  missing age while age matching is on, or a total above 1,500 kg
+  (usually pounds entered as kilograms) shows a message explaining what
+  to fix, instead of a chart.
+- **Empty peer group.** If no records match (for example, a 150 kg
+  multi-ply woman), a red message suggests widening the window, and the
+  charts are replaced with an explanation.
+- **Small peer group.** If fewer than 30 records match, the results are
+  still shown, but with an amber warning that the percentiles are
+  unstable.
+
+The same states are visible from code:
+
+``` r
+
+empty <- compare_lifter(powerlifting, sex = "F", equipment = "Multi-ply",
+                        bodyweight = 150, squat = 200, bench = 120,
+                        deadlift = 200, bodyweight_tolerance = 1)
+empty$n
+#> [1] 0
+empty$weakest_lift
+#> [1] NA
+```
 
 ## Data preparation and limitations
 

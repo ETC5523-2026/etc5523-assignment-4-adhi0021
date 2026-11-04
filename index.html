@@ -54,6 +54,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="bonafide-powerlifting-peer-benchmarker">bonafide: Powerlifting Peer Benchmarker<a class="anchor" aria-label="anchor" href="#bonafide-powerlifting-peer-benchmarker"></a>
 </h1></div>
+<p><strong>Package website:</strong> <a href="https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/" class="uri">https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/</a> (function reference, data documentation and the <a href="https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/articles/using-bonafide.html">Get started vignette</a>).</p>
 <p><code>bonafide</code> is an R package and Shiny app for powerlifters and coaches. It asks:</p>
 <blockquote>
 <p>How does a lifter’s performance compare with similar competitors, and which of the squat, bench press, or deadlift appears to offer the greatest opportunity for improvement?</p>
@@ -79,8 +80,16 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/">bonafide</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/run_powerlifting_app.html">run_powerlifting_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>The package also supports programmatic comparison:</p>
+<p>The app opens in a browser or the IDE viewer. Choose the sex and equipment category, enter bodyweight and the three best lifts, and the percentile chart, peer-total histogram and plain-language summary update automatically. The <strong>Guide &amp; limitations</strong> tab explains every field. To stop the app, close it and press Esc in the R console.</p>
+</div>
+<div class="section level2">
+<h2 id="data-preparation">Data preparation<a class="anchor" aria-label="anchor" href="#data-preparation"></a>
+</h2>
+<p><code>data-raw/prepare_powerlifting.R</code> rebuilds <code>data/powerlifting.rda</code> from the raw CSV. From the package root, run:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/prepare_powerlifting.R"</span><span class="op">)</span></span></code></pre></div>
+<p>The package also supports programmatic comparison:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/compare_lifter.html">compare_lifter</a></span><span class="op">(</span></span>
 <span>  <span class="va">powerlifting</span>,</span>
 <span>  sex <span class="op">=</span> <span class="st">"F"</span>, equipment <span class="op">=</span> <span class="st">"Raw"</span>, bodyweight <span class="op">=</span> <span class="fl">63</span>,</span>
@@ -93,7 +102,7 @@
 <div class="section level2">
 <h2 id="generative-ai-declaration">Generative AI declaration<a class="anchor" aria-label="anchor" href="#generative-ai-declaration"></a>
 </h2>
-<p>Generative AI declaration: I used OpenAI Codex to help plan the user question; scaffold and revise the R package, data-preparation script, Shiny application, tests, documentation and styling; and diagnose package-check issues. I checked and revised the generated code and text and remain responsible for the submitted work.</p>
+<p>Generative AI declaration: I used ChatGPT to help plan the user question; data-preparation script robustness, documentation and styling. I used Claude Code to diagnose why the pkgdown website was not loading, to revise the Shiny app’s validation and robustness, interpretation text and charts. I checked and revised the generated code and text and remain responsible for the submitted work.</p>
 </div>
 <div class="section level2">
 <h2 id="licence">Licence<a class="anchor" aria-label="anchor" href="#licence"></a>

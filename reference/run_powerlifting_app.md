@@ -24,3 +24,11 @@ run_powerlifting_app(...)
 The value returned by
 [`shiny::runApp()`](https://rdrr.io/pkg/shiny/man/runApp.html). Called
 for its side effect.
+
+## Examples
+
+``` r
+if (interactive()) {
+  run_powerlifting_app()
+}
+```
