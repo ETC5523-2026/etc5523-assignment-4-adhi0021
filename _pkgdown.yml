@@ -1,0 +1,31 @@
+ url: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    primary: "#b33a3a"
+navbar:
+  structure:
+    left: [intro, reference, articles]
+    right: [search, github]
+  components:
+    intro:
+      text: Get started
+      href: articles/using-bonafide.html
+    github:
+      icon: fab fa-github
+      aria-label: GitHub repository
+      href: https://github.com/ETC5523-2026/etc5523-assignment-4-adhi0021
+reference:
+  - title: Use the package
+    contents:
+      - compare_lifter
+      - run_powerlifting_app
+  - title: Data
+    contents:
+      - powerlifting
+articles:
+  - title: Get started
+    navbar: ~
+    contents:
+      - using-bonafide
