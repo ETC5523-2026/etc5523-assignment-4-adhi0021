@@ -1,1 +1,9 @@
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+docs/
+.checksrc/
+.rcache/
+bonafide_*.tar.gz
+bonafide.Rcheck/

@@ -1,11 +1,28 @@
 Package: bonafide
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Interactive Powerlifting Performance Benchmarks
+Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Aryaman", "Dhindsa", email = "adhi0021@student.monash.edu",
+           role = c("aut", "cre"))
+Description: Provides a prepared historical extract of OpenPowerlifting
+    competition results, tools for comparing a three-lift performance with
+    similar competitors, and an interactive Shiny application for exploring
+    lift-specific and total-strength percentiles.
+License: MIT + file LICENSE
+URL: https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/,
+    https://github.com/ETC5523-2026/etc5523-assignment-4-adhi0021
+BugReports: https://github.com/ETC5523-2026/etc5523-assignment-4-adhi0021/issues
+Depends:
+    R (>= 4.2)
+Imports:
+    bslib,
+    ggplot2,
+    shiny
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
 Encoding: UTF-8
+LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 8.1.0
+Config/roxygen2/version: 8.1.0
