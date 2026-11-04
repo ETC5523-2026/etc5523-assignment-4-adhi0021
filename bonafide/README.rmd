@@ -16,21 +16,21 @@ Rows represent competition performances rather than unique people, so repeat com
 
 Install the development version from GitHub:
 
-```r
+```{r}
 # install.packages("remotes")
 remotes::install_github("ETC5523-2026/etc5523-assignment-4-adhi0021")
 ```
 
 ## Launch the app
 
-```r
+```{r}
 library(bonafide)
 run_powerlifting_app()
 ```
 
 The package also supports programmatic comparison:
 
-```r
+```{r}
 result <- compare_lifter(
   powerlifting,
   sex = "F", equipment = "Raw", bodyweight = 63,
