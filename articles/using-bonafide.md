@@ -31,28 +31,26 @@ console.
 
 ## Using the app
 
-1.  In **Who to compare against**, choose the competition sex and
-    equipment category, enter the bodyweight and set the bodyweight
-    matching window. Start with the default ±5 kg.
+1.  In the sidebar, choose the competition sex and equipment category,
+    enter the bodyweight and set the bodyweight window. Start with the
+    default ±5 kg.
 2.  Optionally tick **Also match by age**. This gives a more specific
     peer group, but age is missing for many records, so the group gets
     smaller.
-3.  In **The performance to benchmark**, enter the best successful
-    squat, bench press and deadlift. The results update automatically
-    after you stop typing.
-4.  Every control has a short explanation underneath it, and the **Guide
-    & limitations** tab defines each field.
+3.  Enter the best successful squat, bench press and deadlift. The
+    results update automatically.
+4.  A note at the bottom of the sidebar explains the equipment
+    categories and windows, and each chart has a footer explaining how
+    to read it.
 
 ## Interpreting the outputs
 
 | App output | What it shows | How it answers the question |
 |----|----|----|
 | Peer-group message | Green: at least 30 matching records. Amber: fewer than 30. Red: none. | Tells you whether the comparison is trustworthy before you read anything else. |
-| Value boxes | Entered total, number of comparable performances, and the lift with the lowest percentile. | A quick headline answer. |
-| *What this means* | A plain-language summary of the result. | Puts the answer into words, including whether the lift profile is balanced. |
 | Percentile by lift | The percentile of each lift and the total, with a dashed line at 50% (the typical peer). | The shortest of the three lift bars is the lift with the most relative room to improve. |
-| Your total among peer totals | A histogram of peer totals, with your total (red) and the peer median (dashed). | Shows overall strength in context, not just as a single number. |
-| Detailed benchmark | Your lift, the peer median, the gap to the median and the percentile. | Translates percentiles back into kilograms. |
+| Your total among peers | A histogram of peer totals, with your total as a red line. | Shows overall strength in context, not just as a single number. |
+| *What this means* | A one-sentence summary, plus a table of your lifts, the peer medians and the percentiles. | Puts the answer into words and translates percentiles back into kilograms. |
 
 The percentile chart in the app is built from the same `summary` table
 that
