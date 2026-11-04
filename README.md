@@ -6,7 +6,7 @@
 
 ```r
 # install.packages("remotes")
-remotes::install_github("ETC5523-2026/etc5523-assignment-4-adhi0021/bonafide")
+remotes::install_github("ETC5523-2026/etc5523-assignment-4-adhi0021/bonafide/")
 ```
 
 ## Launch the App
@@ -33,7 +33,7 @@ result$summary
 
 ## Data & Resources
 
-* **Documentation:** Full package documentation and vignettes are available [here](https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/bonafide).
+* **Documentation:** Full package documentation and vignettes are available [here](https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/bonafide/).
 * **Data Source:** Built using historical records from the [OpenPowerlifting database](https://www.kaggle.com/open-powerlifting/powerlifting-database) (CC0 Public Domain).
 * **License:** Package code is licensed under the MIT License.
 * **AI Declaration:** OpenAI Codex was utilized to assist in planning, scaffolding, and revising the R package code, documentation, and Shiny app.
