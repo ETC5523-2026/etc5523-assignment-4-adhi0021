@@ -1,17 +1,13 @@
 # Prepare the historical OpenPowerlifting extract shipped with bonafide.
 #
 # Run from the package root with:
-# source("data-raw/prepare_powerlifting.R")
+# source("bonafide/data-raw/prepare_powerlifting.R")
 #
 # The raw file was obtained from the OpenPowerlifting database distribution
 # published on Kaggle. It is retained in data-raw and excluded from the
 # installed package.
 
 raw_path <- "data-raw/openpowerlifting.csv"
-
-if (!file.exists(raw_path)) {
-  stop("Place openpowerlifting.csv in data-raw before running this script.")
-}
 
 raw <- read.csv(raw_path, stringsAsFactors = FALSE, na.strings = c("", "NA"))
 
@@ -20,10 +16,6 @@ required <- c(
   "BestSquatKg", "BestBenchKg", "BestDeadliftKg", "TotalKg", "Place", "Wilks"
 )
 
-missing_columns <- setdiff(required, names(raw))
-if (length(missing_columns) > 0) {
-  stop("Raw data is missing: ", paste(missing_columns, collapse = ", "))
-}
 
 powerlifting <- data.frame(
   sex = raw$Sex,
@@ -59,6 +51,3 @@ rownames(powerlifting) <- NULL
 
 dir.create("data", showWarnings = FALSE)
 save(powerlifting, file = "data/powerlifting.rda", compress = "xz", version = 2)
-
-message("Saved ", format(nrow(powerlifting), big.mark = ","),
-        " complete three-lift performances to data/powerlifting.rda")
