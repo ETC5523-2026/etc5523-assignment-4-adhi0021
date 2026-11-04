@@ -6,7 +6,7 @@
 
 ```r
 # install.packages("remotes")
-remotes::install_github("ETC5523-2026/etc5523-assignment-4-adhi0021")
+remotes::install_github("ETC5523-2026/etc5523-assignment-4-adhi0021/bonafide")
 ```
 
 ## Launch the App
