@@ -40,6 +40,8 @@ result <- compare_lifter(
 result$summary
 ```
 
+This function supports 6 list components: '$summary', '$peers', '$n', '$seak_sample', '$weakest_lift', '$filters'. The '$filter' component have its own elements.
+W
 Package documentation and the vignette are published at <https://etc5523-2026.github.io/etc5523-assignment-4-adhi0021/>.
 
 ## Generative AI declaration

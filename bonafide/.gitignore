@@ -7,3 +7,4 @@ docs/
 .rcache/
 bonafide_*.tar.gz
 bonafide.Rcheck/
+docs
