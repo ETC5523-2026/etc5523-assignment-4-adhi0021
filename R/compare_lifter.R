@@ -36,7 +36,7 @@ compare_lifter <- function(data = NULL, sex, equipment, bodyweight,
                            bodyweight_tolerance = 5, age_tolerance = 5,
                            min_n = 30) {
   if (is.null(data)) {
-    data <- get("powerlifting", envir = environment())
+    data <- bonafide::powerlifting
   }
 
   needed <- c("sex", "equipment", "age", "bodyweight_kg", "squat_kg",

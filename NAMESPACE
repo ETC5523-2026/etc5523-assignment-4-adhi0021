@@ -2,3 +2,5 @@
 
 export(compare_lifter)
 export(run_powerlifting_app)
+importFrom(bslib,bs_theme)
+importFrom(ggplot2,ggplot)

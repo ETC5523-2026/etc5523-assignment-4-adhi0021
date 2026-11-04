@@ -9,7 +9,13 @@
 #'
 #' @return The value returned by [shiny::runApp()]. Called for its side effect.
 #' @export
+#' @importFrom bslib bs_theme
+#' @importFrom ggplot2 ggplot
 #'
+#' @examples
+#' if (interactive()) {
+#'   run_powerlifting_app()
+#' }
 run_powerlifting_app <- function(...) {
   # These packages are used by the app script in inst/; checking them here also
   # gives a clearer failure than sourcing a partially constructed interface.

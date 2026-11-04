@@ -18,3 +18,8 @@ lifter or coach compare a three-lift performance with historical competitors
 of the same sex and equipment category at a similar bodyweight and,
 optionally, age.
 }
+\examples{
+if (interactive()) {
+  run_powerlifting_app()
+}
+}
