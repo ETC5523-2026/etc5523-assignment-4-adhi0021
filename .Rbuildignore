@@ -1,0 +1,11 @@
+^\.Rproj\.user$
+^\.github$
+^\.git$
+^_pkgdown\.yml$
+^docs$
+^data-raw$
+^README\.Rmd$
+^assignment-brief\.pdf$
+^bonafide_[0-9.]+\.tar\.gz$
+^bonafide\.Rcheck$
+^\.checksrc$
