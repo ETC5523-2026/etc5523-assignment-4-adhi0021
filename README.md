@@ -30,7 +30,7 @@ library(bonafide)
 run_powerlifting_app()
 ```
 
-The app opens in a browser or the IDE viewer. Choose the sex and equipment category, enter bodyweight and the three best lifts, and the percentile chart, peer-total histogram and plain-language summary update automatically. The **Guide & limitations** tab explains every field. To stop the app, close it and press Esc in the R console.
+The app opens in a browser or the IDE viewer. Choose the sex and equipment category, enter bodyweight and the three best lifts, and the percentile chart, peer-total histogram and plain-language summary update automatically. Notes in the sidebar and under each chart explain the fields and how to read the outputs. To stop the app, close it and press Esc in the R console.
 
 ## Data preparation
 
