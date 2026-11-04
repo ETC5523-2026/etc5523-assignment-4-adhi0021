@@ -1,6 +1,10 @@
 # MIT License
 
+<<<<<<< HEAD
 Copyright (c) 2026 Aryaman Adhi
+=======
+Copyright (c) 2026 Aryaman Dhindsa
+>>>>>>> 03862952a879d128674d80de156f6423baa8604f
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

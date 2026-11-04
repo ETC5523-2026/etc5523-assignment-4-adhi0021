@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ^\.Rproj\.user$
 ^\.github$
 ^\.git$
@@ -9,3 +10,11 @@
 ^bonafide_[0-9.]+\.tar\.gz$
 ^bonafide\.Rcheck$
 ^\.checksrc$
+=======
+^bonafide\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+>>>>>>> 03862952a879d128674d80de156f6423baa8604f
